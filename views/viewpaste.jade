@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js")
+    script hljs.initHighlightingOnLoad();
+    div(class='content')
+        p Paste #{_id} submitted #{moment(date).format('MMMM Do YYYY,  h:mm a')}
+        pre(style='overflow:hidden')
+            code #{paste}

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+    div(class='content')
+        form(method='POST' action='/')
+            p
+                textarea(rows=20 cols=90 name='paste' id='paste')
+            p
+                input#submit(type='submit' name='submit' value='Paste')

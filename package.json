@@ -1,9 +1,12 @@
 {
-  "name": "paste",
-  "version": "0.0.1",
+  "name": "pastebin",
+  "version": "0.0.2",
   "private": true,
+  "author": "Tyler Phillips",
+  "license": "MIT",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "jasmine-node spec"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -20,5 +23,8 @@
     "random-word": "^2.0.0",
     "serve-favicon": "~2.4.5",
     "shortid": "^2.2.8"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
   }
 }

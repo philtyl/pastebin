@@ -6,5 +6,5 @@ block content
     div(class='content')
         p Paste #{_id} submitted #{moment(date).format('MMMM Do YYYY,  h:mm a')}
         p #[a(href="/r/#{_id}") View RAW]
-        pre(style='overflow:hidden')
+        pre
             code #{paste}

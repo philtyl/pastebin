@@ -58,7 +58,8 @@ a:hover {
 
 .content {
   text-align: center;
-  height: 100%; }
+  height: 100%;
+  max-width: 100vw; }
 
 .pasteform {
   height: 100%; }

@@ -1,5 +1,5 @@
 var express = require('express');
-var shortid = require('shortid');
+var shortid = require('js-shortid');
 var lang = require('language-classifier');
 var mongoUtils = require('../util/mongoUtil');
 var randomUtils = require('../util/randomUtil');
@@ -36,7 +36,7 @@ router.get('/*', function(req, res, next) {
 /* POST paste. */
 router.post('/', function(req, res) {
   var paste = {
-    _id: shortid.generate(),
+    _id: shortid.gen(),
     humanId: req.body.filename || randomUtils.generateIdentifier(),
     date: new Date(),
     language: lang(req.body.paste),

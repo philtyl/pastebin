@@ -1,8 +1,8 @@
 var express = require('express');
 var shortid = require('shortid');
 var lang = require('language-classifier');
-var mongoUtils = require('../modules/mongoUtils');
-var randomUtils = require('../modules/randomUtils');
+var mongoUtils = require('../util/mongoUtil');
+var randomUtils = require('../util/randomUtil');
 
 var router = express.Router();
 

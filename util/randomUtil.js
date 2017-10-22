@@ -1,5 +1,5 @@
 var randomWord = require('random-word');
-var mongoUtils = require('./mongoUtils');
+var mongoUtils = require('./mongoUtil');
 
 const RANDOM_WORDS_SIZE = 3;
 const MAX_WORD_SIZE = 6;

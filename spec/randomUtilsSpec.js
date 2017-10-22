@@ -1,4 +1,4 @@
-var randomUtils = require("../modules/randomUtils");
+var randomUtils = require("../util/randomUtil");
 
 const VALID_IDENTIFIER_PATTERN = '[A-Z][a-z]{0,6}[A-Z][a-z]{0,6}[A-Z][a-z]{0,6}';
 

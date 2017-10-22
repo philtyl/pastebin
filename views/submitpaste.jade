@@ -1,12 +1,8 @@
 extends layout
 
 block content
-    script.
-        function cleanPasteHack() {document.getElementById("pastetextarea").innerText = document.getElementById("pastetextarea").innerText;}
-    script.
-        function preparePaste() {document.getElementById("paste").value = document.getElementById("pastetextarea").innerText;}
     div(class='content')
-        form(method='POST' action='/' class='pasteform' onsubmit='preparePaste()')
+        form(method='POST' action='/' class='pasteform form-horizontal' onsubmit='preparePaste()')
             table(class='container')
                 tbody
                     tr(class='minimal')
@@ -14,8 +10,11 @@ block content
                             input#filename.form-control(type='text', placeholder='Filename [OPTIONAL]' name='filename' class='pastefilename')
                     tr(class='stretched')
                         td
-                            div(id='pastetextarea' contenteditable class='pastetextarea' oninput='cleanPasteHack()')
+                            div(id='pastetextarea' contenteditable='true' class='pastetextarea')
                             input#paste.form-control(type='hidden', name='paste')
                     tr(class='minimal')
                         td
                             input#submit(type='submit' name='submit' value='Paste')
+
+block postjs
+    script(type='text/javascript' src='/javascripts/pastehack.js')

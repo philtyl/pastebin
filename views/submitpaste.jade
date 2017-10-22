@@ -2,8 +2,18 @@ extends layout
 
 block content
     div(class='content')
-        form(method='POST' action='/')
-            p
-                textarea(rows=20 cols=90 name='paste' id='paste')
-            p
-                input#submit(type='submit' name='submit' value='Paste')
+        form(method='POST' action='/' class='pasteform' onsubmit='preparePaste()')
+            table(class='container')
+                tbody
+                    tr(class='minimal')
+                        td
+                            input#filename.form-control(type='text', placeholder='Filename [OPTIONAL]' name='filename' class='pastefilename')
+                    tr(class='stretched')
+                        td
+                            div(id='pastetextarea' contenteditable='true' class='pastetextarea')
+                            input#paste.form-control(type='hidden', name='paste')
+                            script.
+                                function preparePaste() {document.getElementById("paste").value = document.getElementById("pastetextarea").innerHTML;}
+                    tr(class='minimal')
+                        td
+                            input#submit(type='submit' name='submit' value='Paste')

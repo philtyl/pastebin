@@ -1,15 +1,22 @@
 doctype html
 html
-  head
-    title #{title}
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css')
-  body
-    h1(id='title') #[a(href="/") #{title}]
-    block notifbar
-    block content
-    footer
-      div(class='footer')
-        p(style='white-space:pre;')
-          | Placeholder footer
-
+    head
+        title #{title}
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css')
+    body
+        table(class='container')
+            tbody
+                tr(class='minimal')
+                    td
+                        div
+                            h1(id='title') #[a(href="/") #{title}]
+                            block notifbar
+                tr(class='stretched')
+                    td
+                        block content
+                tr(class='minimal')
+                    td
+                        div(class='footer')
+                            p(style='white-space:pre;')
+                                | Source available under MIT License on #[a(href="https://github.com/imDeprecated/pastebin") Github].

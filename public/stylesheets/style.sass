@@ -3,6 +3,7 @@ body
   padding: 0
   margin: 0
   height: 100%
+  width: 100%
 
 body
   font-family: Tahoma, Geneva, sans-serif
@@ -18,9 +19,8 @@ h1
 pre
   border: 2px dotted #cccccc
   padding: 15px
-  text-align: left
   overflow-x: auto !important
-  overflow-y: hidden !important
+  text-align: left
 
 a
   color: #666666
@@ -43,11 +43,11 @@ a:hover
 
 .minimal
   height: 0
-  width: 100%
+  width: 0
 
 .stretched
   height: 100%
-  width: 100%
+  width: 0
 
 .notifbar
   text-align: center
@@ -60,6 +60,7 @@ a:hover
 .content
   text-align: center
   height: 100%
+  width: 100%
 
 .pasteform
   height: 100%
@@ -99,19 +100,10 @@ a:hover
   border: 2px dotted #666666
   background-color: #ffffff
 
-.text
-  outline: none
-  margin: 0 auto
-  display: block
-  border: 2px dotted #cccccc
-  padding: 5px
-  font-family: "Courier New", Courier, monospace
-  font-size: 14px
-  background-color: #f8f8f8
-
-.text:focus
-  border: 2px dotted #666666
-  background-color: #ffffff
+.hljs
+  overflow-x: auto
+  display: inline-block
+  min-width: 100%
 
 .footer
   width: 100%

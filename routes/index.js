@@ -37,7 +37,7 @@ router.get('/*', function(req, res, next) {
 router.post('/', function(req, res) {
   var paste = {
     _id: shortid.generate(),
-    humanId: randomUtils.generateIdentifier(),
+    humanId: req.body.filename || randomUtils.generateIdentifier(),
     date: new Date(),
     language: lang(req.body.paste),
     paste: req.body.paste

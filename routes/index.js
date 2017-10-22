@@ -11,6 +11,17 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'pastebin' });
 });
 
+/* GET raw view page. */
+router.get('/r/*', function(req, res, next) {
+    const id = req.url.split('/')[2];
+
+    mongoUtils.getDb().collection('paste').find({ _id: id }).limit(1).next(function (err, doc) {
+        if (err) throw err;
+        res.header('content-type', 'text/json');
+        res.send(doc.paste);
+    });
+});
+
 /* GET view page. */
 router.get('/*', function(req, res, next) {
     const id = req.url.split('/')[1];

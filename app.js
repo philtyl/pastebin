@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
-var mongoUtils = require('./util/mongoUtil');
+var mongoUtils = require('./routes/util/mongoUtil');
 
 var index = require('./routes/index');
 

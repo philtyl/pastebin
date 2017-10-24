@@ -1,0 +1,8 @@
+.content-view {
+  .content-view-header {
+  }
+
+  .content-view-code {
+    @import '../hljs/hljs';
+  }
+}

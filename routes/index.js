@@ -1,14 +1,15 @@
-var express = require('express');
-var shortid = require('js-shortid');
-var lang = require('language-classifier');
-var mongoUtils = require('../util/mongoUtil');
-var randomUtils = require('../util/randomUtil');
+const APP_NAME = 'pastebin';
 
-var router = express.Router();
+const express = require('express');
+const shortid = require('js-shortid');
+const lang = require('language-classifier');
+const mongoUtils = require('./util/mongoUtil');
+
+const router = express.Router();
 
 /* GET submit page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'pastebin' });
+  res.render('index', { appName: APP_NAME });
 });
 
 /* GET raw view page. */
@@ -28,16 +29,16 @@ router.get('/*', function(req, res, next) {
 
     mongoUtils.getDb().collection('paste').find({ _id: id }).limit(1).next(function (err, doc) {
         if (err) throw err;
-        const viewData = Object.assign({}, doc, { title: 'pastebin' });
-        res.render('viewpaste', viewData);
+        const viewData = Object.assign({}, { appName: APP_NAME }, doc);
+        res.render('content/view', viewData);
     });
 });
 
 /* POST paste. */
 router.post('/', function(req, res) {
-  var paste = {
+  const paste = {
     _id: shortid.gen(),
-    humanId: req.body.filename || randomUtils.generateIdentifier(),
+    pasteName: req.body.pasteName,
     date: new Date(),
     language: lang(req.body.paste),
     paste: req.body.paste
@@ -46,7 +47,7 @@ router.post('/', function(req, res) {
   mongoUtils.getDb().collection('paste').insertOne(paste, function (err, res) {
     if (err) throw err;
   });
-  return res.redirect('/' + paste._id + '/' + paste.humanId);
+  return res.redirect('/' + paste._id);
 });
 
 module.exports = router;

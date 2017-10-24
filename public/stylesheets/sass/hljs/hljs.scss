@@ -1,0 +1,21 @@
+.hljs {
+  display: inline-block;
+  padding: 0.5em 0;
+  -webkit-text-size-adjust: none;
+  min-height: 0;
+
+  .hljs-ln-numbers {
+    user-select: none;
+    text-align: left;
+    color: #ccc;
+    border-right: 1px solid #ccc;
+    vertical-align: top;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .hljs-ln-code {
+    padding-left: 5px;
+    white-space: pre;
+  }
+}

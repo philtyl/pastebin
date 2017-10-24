@@ -2,7 +2,7 @@ extends ../layout
 
 block content
     div(class='content-submit')
-        form(method='POST' action='/' id='paste-form')
+        form(method='POST' action='/' id='paste-form' class='content-submit-form')
             div(class='content-submit-controls-container')
                 input#pasteName.form-control(name='pasteName' type='text' placeholder='Filename [OPTIONAL]')
                 button(name='submit' form='paste-form' value='Paste') Paste

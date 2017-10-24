@@ -4,5 +4,12 @@
 
   .content-view-code {
     @import '../hljs/hljs';
+
+    .hljs {
+      overflow-x: auto;
+      display: inline-block;
+      min-width: 100%;
+      text-align: left;
+    }
   }
 }

@@ -1,16 +1,10 @@
 extends ../layout
 
 block content
-    div(class='content-paste')
-        form(method='POST' action='/' class='pasteform form-horizontal')
-            table(class='container')
-                tbody
-                    tr(class='minimal')
-                        td
-                            input#pasteName.form-control(type='text', placeholder='Filename [OPTIONAL]' name='pasteName')
-                    tr(class='stretched')
-                        td
-                            input#paste.form-control(type='textarea', name='paste')
-                    tr(class='minimal')
-                        td
-                            input#submit(type='submit' name='submit' value='Paste')
+    div(class='content-submit')
+        form(method='POST' action='/' id='paste-form')
+            div(class='content-submit-controls-container')
+                input#pasteName.form-control(name='pasteName' type='text' placeholder='Filename [OPTIONAL]')
+                button(name='submit' form='paste-form' value='Paste') Paste
+            div(class='content-submit-paste-container')
+                textarea#paste.form-control(name='paste' autofocus='true' rows='40' class='content-submit-paste-window')

@@ -1,13 +1,17 @@
 {
   "name": "pastebin",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "author": "Tyler Phillips",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imDeprecated/pastebin.git"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "build": "npm run build-sass",
-    "build-sass": "node-sass public/stylesheets/sass/style.scss public/stylesheets/main.css"
+    "build-sass": "node-sass public/stylesheets/sass/style.scss | cleancss -o public/stylesheets/main.css"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -15,6 +19,7 @@
     "debug": "~2.6.9",
     "express": "~4.15.5",
     "highlight.js": "^9.12.0",
+    "highlightjs-line-numbers.js": "^2.1.0",
     "jade": "~1.11.0",
     "js-shortid": "^0.1.1",
     "language-classifier": "0.0.1",
@@ -25,8 +30,9 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "browserfy": "^1.0.0",
+    "browserify": "^14.5.0",
     "clean-css": "^4.1.9",
+    "clean-css-cli": "^4.1.10",
     "node-sass": "^4.5.3",
     "uglify-js": "^3.1.5"
   }

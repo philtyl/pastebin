@@ -5,16 +5,8 @@ html {
     text-align: center;
     height: 100%;
     margin: 0;
+    background: #fdfdfd;
   }
 }
 
-.layout-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100%;
-
-  @import 'layout/layout-header';
-  @import 'layout/layout-content';
-  @import 'layout/layout-footer';
-}
+@import "layout/layout-container";

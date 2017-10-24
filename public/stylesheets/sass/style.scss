@@ -1,0 +1,12 @@
+html {
+  height: 100%;
+  body {
+    font-family: Tahoma, Geneva, sans-serif;
+    text-align: center;
+    height: 100%;
+    margin: 0;
+    background: #fdfdfd;
+  }
+}
+
+@import "layout/layout-container";

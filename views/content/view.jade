@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    div(class='content-view')
+        div(class='content-view-header')
+            p
+                | Paste #{_id} submitted #{moment(date).format('MMMM Do YYYY,  h:mm a')}
+                |  | #[a(href="/r/#{_id}") RAW]
+        div(class='content-view-code-container')
+            pre(class='content-view-code')
+                code #{paste}
+
+block postjs
+    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css')
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js')
+    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.1.0/highlightjs-line-numbers.min.js')
+    script hljs.initHighlightingOnLoad();
+    script hljs.initLineNumbersOnLoad({singleLine: true});

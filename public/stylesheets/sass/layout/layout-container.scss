@@ -1,0 +1,10 @@
+.layout-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100%;
+
+  @import 'layout-header';
+  @import 'layout-content';
+  @import 'layout-footer';
+}

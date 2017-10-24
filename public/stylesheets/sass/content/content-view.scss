@@ -1,17 +1,12 @@
 .content-view {
-  margin: 10px;
+  max-width: 100vw;
 
   .content-view-header {
   }
 
-  .content-view-code {
-    @import '../hljs/hljs';
+  .content-view-code-container {
+    margin: 10px;
 
-    .hljs {
-      overflow-x: auto;
-      display: inline-block;
-      min-width: 100%;
-      text-align: left;
-    }
+    @import '../hljs/hljs';
   }
 }

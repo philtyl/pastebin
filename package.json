@@ -1,6 +1,6 @@
 {
-  "name": "pastebin",
-  "version": "0.0.8",
+  "name": "paste",
+  "version": "0.0.9",
   "private": true,
   "author": "Tyler Phillips",
   "license": "MIT",
@@ -9,12 +9,13 @@
     "url": "https://github.com/imDeprecated/pastebin.git"
   },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "bower install && node ./bin/www",
     "build": "npm run build-sass",
     "build-sass": "node-sass public/stylesheets/sass/style.scss | cleancss -o public/stylesheets/main.css"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
+    "bower": "^1.8.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",

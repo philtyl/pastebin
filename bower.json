@@ -1,0 +1,10 @@
+{
+  "name": "paste",
+  "version": "0.1",
+  "dependencies": {
+    "jquery": "latest",
+    "highlightjs": "latest",
+    "highlightjs-line-numbers.js": "latest",
+    "jquery-ui": "^1.12.1"
+  }
+}

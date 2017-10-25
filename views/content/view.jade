@@ -10,9 +10,11 @@ block content
             pre(class='content-view-code')
                 code #{payload}
 
-block postjs
-    link(rel='stylesheet', href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css')
-    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js')
-    script(type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.1.0/highlightjs-line-numbers.min.js')
+block preload
+    link(rel='stylesheet', href='components/highlightjs/styles/default.css')
+    script(type='text/javascript' src='components/highlightjs/highlight.pack.js')
+    script(type='text/javascript' src='components/highlightjs-line-numbers.js/src/highlightjs-line-numbers.js')
+
+block postload
     script hljs.initHighlightingOnLoad();
     script hljs.initLineNumbersOnLoad({singleLine: true});

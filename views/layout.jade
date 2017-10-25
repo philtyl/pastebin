@@ -5,6 +5,7 @@ html
     head
         +title
         link(rel='stylesheet', href='/stylesheets/main.css')
+        block preload
     body
         div(class='layout-container')
             div(class='layout-header')
@@ -14,4 +15,4 @@ html
                 block content
             footer(class='layout-footer')
                 p Source available under MIT License on #[a(href="https://github.com/imDeprecated/pastebin") Github].
-        block postjs
+        block postload

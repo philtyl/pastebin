@@ -1,0 +1,29 @@
+/*image gallery*/
+.image-checkbox {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 4px solid transparent;
+  margin: 1px;
+  outline: 0;
+  transition: all .2s;
+  display: inline-block;
+
+  img {
+    margin: 1px;
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
+}
+
+.image-checkbox-checked {
+  border-color: #4783B0;
+}
+
+.image-checkbox-disabled {
+  img {
+    opacity: 0.3;
+  }
+}
+

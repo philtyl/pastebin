@@ -12,10 +12,10 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET raw view page. */
-router.get('/r/*', function(req, res, next) {
+router.get('/r/:id', function(req, res, next) {
     const id = req.url.split('/')[2];
 
-    Pastes.findOne({ _id: id }).lean().exec(function (err, paste) {
+    Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
         res.header('content-type', 'text/json');
         res.send(paste.payload);
@@ -23,10 +23,8 @@ router.get('/r/*', function(req, res, next) {
 });
 
 /* GET view page. */
-router.get('/*', function(req, res, next) {
-    const id = req.url.split('/')[1];
-
-    Pastes.findOne({ _id: id }).lean().exec(function (err, paste) {
+router.get('/:id', function(req, res, next) {
+    Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
         const model = Object.assign({}, { appName: APP_NAME }, paste);
         res.render('content/view', model);

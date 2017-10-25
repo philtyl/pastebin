@@ -1,10 +1,9 @@
-const APP_NAME = 'pastebin';
-
 const express = require('express');
 const shortid = require('js-shortid');
-const lang = require('language-classifier');
-const mongoUtils = require('./util/mongoUtil');
 
+const Pastes = require('../models/paste');
+
+const APP_NAME = 'paste.moe';
 const router = express.Router();
 
 /* GET submit page. */
@@ -13,41 +12,40 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET raw view page. */
-router.get('/r/*', function(req, res, next) {
+router.get('/r/:id', function(req, res, next) {
     const id = req.url.split('/')[2];
 
-    mongoUtils.getDb().collection('paste').find({ _id: id }).limit(1).next(function (err, doc) {
+    Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
         res.header('content-type', 'text/json');
-        res.send(doc.paste);
+        res.send(paste.payload);
     });
 });
 
 /* GET view page. */
-router.get('/*', function(req, res, next) {
-    const id = req.url.split('/')[1];
-
-    mongoUtils.getDb().collection('paste').find({ _id: id }).limit(1).next(function (err, doc) {
+router.get('/:id', function(req, res, next) {
+    Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
-        const viewData = Object.assign({}, { appName: APP_NAME }, doc);
-        res.render('content/view', viewData);
+        const model = Object.assign({}, { appName: APP_NAME }, paste);
+        res.render('content/view', model);
     });
 });
 
 /* POST paste. */
 router.post('/', function(req, res) {
-  const paste = {
-    _id: shortid.gen(),
-    pasteName: req.body.pasteName,
-    date: new Date(),
-    language: lang(req.body.paste),
-    paste: req.body.paste
-  };
+    const paste = new Pastes({
+        _id: shortid.gen(),
+        title: req.body.title,
+        date: new Date(),
+        private: req.body.private,
+        payload: req.body.payload
+    });
 
-  mongoUtils.getDb().collection('paste').insertOne(paste, function (err, res) {
-    if (err) throw err;
-  });
-  return res.redirect('/' + paste._id);
+    paste.save(function (err, paste) {
+        if (err) throw err;
+    });
+
+    return res.redirect('/' + paste._id);
 });
 
 module.exports = router;

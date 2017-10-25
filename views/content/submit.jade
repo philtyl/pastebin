@@ -4,7 +4,7 @@ block content
     div(class='content-submit')
         form(method='POST' action='/' id='paste-form' class='content-submit-form')
             div(class='content-submit-controls-container')
-                input#pasteName.form-control(name='pasteName' type='text' placeholder='Filename [OPTIONAL]')
+                input#title.form-control(name='title' type='text' placeholder='Filename [OPTIONAL]')
                 button(name='submit' form='paste-form' value='Paste') Paste
             div(class='content-submit-paste-container')
-                textarea#paste.form-control(name='paste' autofocus='true' rows='40' class='content-submit-paste-window')
+                textarea#payload.form-control(name='payload' autofocus='true' rows='40' class='content-submit-paste-window')

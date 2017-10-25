@@ -3,8 +3,20 @@ extends ../layout
 block content
     div(class='content-submit')
         form(method='POST' action='/' id='paste-form' class='content-submit-form')
-            div(class='content-submit-controls-container')
-                input#title.form-control(name='title' type='text' placeholder='Filename [OPTIONAL]')
-                button(name='submit' form='paste-form' value='Paste') Paste
+            div(class='content-submit-header')
+                div(class='content-submit-cluster')
+                    label(class='content-submit-cluster-private image-checkbox' title='Private (Requires key to decrypt)')
+                        img(src='images/icon-private.png')
+                        input#private.form-control(name='private' type='checkbox')
+                    label(class='content-submit-cluster-anon image-checkbox image-checkbox-disabled' title='Prevent account linkage')
+                        img(src='images/icon-anon.png')
+                        input#anon.form-control(name='anon' type='checkbox')
+                div(class='content-submit-controls-container')
+                    input#title.form-control(name='title' type='text' placeholder='Filename [OPTIONAL]')
+                    button(name='submit' form='paste-form' value='Paste') Paste
             div(class='content-submit-paste-container')
                 textarea#payload.form-control(name='payload' autofocus='true' rows='40' class='content-submit-paste-window')
+
+block postload
+    script(type='text/javascript', src='./components/jquery/dist/jquery.js')
+    script(type='text/javascript', src='./javascripts/img-checkbox.js')

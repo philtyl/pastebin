@@ -1,5 +1,5 @@
 .content-submit {
-  height: 100%;
+  flex: 1;
 
   .content-submit-form {
     height: 100%;
@@ -77,6 +77,7 @@
       box-sizing: border-box;
       height: 100%;
       background: #fff;
+      flex: 1;
 
       .content-submit-paste-window {
         box-sizing: border-box;

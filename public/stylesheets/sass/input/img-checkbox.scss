@@ -10,6 +10,8 @@
 
   img {
     margin: 1px;
+    user-select: none;
+    -webkit-user-drag: none;
   }
 
   input[type="checkbox"] {
@@ -18,7 +20,7 @@
 }
 
 .image-checkbox-checked {
-  border-color: #4783B0;
+  border-color: #6c6c6c;
 }
 
 .image-checkbox-disabled {

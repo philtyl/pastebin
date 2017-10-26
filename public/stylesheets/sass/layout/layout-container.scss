@@ -4,6 +4,10 @@
   grid-template-rows: auto 1fr auto;
   min-height: 100%;
 
+  h1 {
+    user-select: none;
+  }
+
   @import 'layout-header';
   @import 'layout-content';
   @import 'layout-footer';

@@ -2,6 +2,16 @@
   max-width: 100vw;
 
   .content-view-header {
+    display: flex;
+    flex-direction: row;
+
+    .content-view-header-summary {
+      flex-grow: 3;
+    }
+
+    .content-view-header-command-cluster {
+      flex-grow: 1;
+    }
   }
 
   .content-view-code-container {

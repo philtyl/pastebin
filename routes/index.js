@@ -15,26 +15,25 @@ router.get('/', function(req, res, next) {
 
 /* GET raw view page. */
 router.get('/r/:id', function(req, res, next) {
-    const id = req.url.split('/')[2];
-
     Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
-        if (paste.private && req.query.key) {
+        if (paste && paste.private && req.query.key) {
             paste.payload = crypto.AES.decrypt(paste.payload, req.query.key).toString(crypto.enc.Utf8);
         }
         res.header('content-type', 'text/json');
-        res.send(paste.payload);
+        res.send(paste ? paste.payload : '');
     });
 });
 
 /* GET view page. */
 router.get('/:id', function(req, res, next) {
+    let key = req.query.key;
     Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
-        if (paste.private && req.query.key) {
-            paste.payload = crypto.AES.decrypt(paste.payload, req.query.key).toString(crypto.enc.Utf8);
+        if (paste && paste.private && key) {
+            paste.payload = crypto.AES.decrypt(paste.payload, key).toString(crypto.enc.Utf8);
         }
-        const model = Object.assign({}, { appName: APP_NAME }, paste);
+        const model = Object.assign({}, { appName: APP_NAME, key: key }, paste, req.query);
         res.render('content/view', model);
     });
 });

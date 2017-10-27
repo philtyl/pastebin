@@ -1,5 +1,6 @@
 .layout-content {
-  grid-row: 2;
+  flex: 1;
+  display: flex;
 
   @import '../content/content-submit';
   @import '../content/content-view';

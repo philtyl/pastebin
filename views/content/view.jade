@@ -5,7 +5,8 @@ block content
         div(class='content-view-header')
             p(class='content-view-header-summary') Paste #{_id} submitted #{moment(date).format('MMMM Do YYYY,  h:mm a')}
             div(class='content-view-header-command-cluster')
-                a(href='/r/#{key ? _id+"/?key="+key : _id}') RAW
+                a(class='content-view-header-command-cluster-item' href='/r/#{key ? _id+"/"+title+"/?key="+key : _id+"/"+title}')
+                    img(src='images/icon-raw.png' title='Raw file')
         div(class='content-view-code-container')
             pre(class='content-view-code')
                 code #{payload}

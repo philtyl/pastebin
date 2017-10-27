@@ -49,9 +49,10 @@ router.post('/', function(req, res) {
         req.body.payload = crypto.AES.encrypt(req.body.payload, secret);
     }
 
+    const id = shortid.gen();
     const paste = new Pastes({
-        _id: shortid.gen(),
-        title: req.body.title || 'placeholder.txt',
+        _id: id,
+        title: req.body.title || id,
         date: new Date(),
         private: req.body.private,
         payload: req.body.payload
@@ -63,13 +64,13 @@ router.post('/', function(req, res) {
 
     if (req.body.private) {
         return res.redirect(url.format({
-            pathname: '/' + paste._id,
+            pathname: '/' + id,
             query: {
                 'key': secret
             }
         }));
     } else {
-        return res.redirect('/' + paste._id);
+        return res.redirect('/' + id);
     }
 });
 

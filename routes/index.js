@@ -14,13 +14,14 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET raw view page. */
-router.get('/r/:id/:title', function(req, res, next) {
+router.get('/r/:id', function(req, res, next) {
     Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
         if (paste && paste.private && req.query.key) {
             paste.payload = crypto.AES.decrypt(paste.payload, req.query.key).toString(crypto.enc.Utf8);
         }
-        res.header('content-type', 'text/json');
+        res.header('content-type', 'text/plain');
+        res.header('content-disposition', 'filename=' + paste.title);
         res.send(paste ? paste.payload : '');
     });
 });
@@ -34,6 +35,7 @@ router.get('/:id', function(req, res, next) {
             paste.payload = crypto.AES.decrypt(paste.payload, key).toString(crypto.enc.Utf8);
         }
         const model = Object.assign({}, { appName: APP_NAME, key: key }, paste, req.query);
+        res.header('content-disposition', 'filename=' + paste.title);
         res.render('content/view', model);
     });
 });
@@ -47,9 +49,10 @@ router.post('/', function(req, res) {
         req.body.payload = crypto.AES.encrypt(req.body.payload, secret);
     }
 
+    const id = shortid.gen();
     const paste = new Pastes({
-        _id: shortid.gen(),
-        title: req.body.title || 'placeholder.txt',
+        _id: id,
+        title: req.body.title || id,
         date: new Date(),
         private: req.body.private,
         payload: req.body.payload
@@ -61,13 +64,13 @@ router.post('/', function(req, res) {
 
     if (req.body.private) {
         return res.redirect(url.format({
-            pathname: '/' + paste._id,
+            pathname: '/' + id,
             query: {
                 'key': secret
             }
         }));
     } else {
-        return res.redirect('/' + paste._id);
+        return res.redirect('/' + id);
     }
 });
 

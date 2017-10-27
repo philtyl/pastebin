@@ -16,22 +16,16 @@
         background: #fff;
         height: 42px;
 
-        .content-submit-cluster-private {
+        .content-submit-cluster-item {
           height: 40px;
 
           img {
             height: 30px;
             width: 30px;
-          }
-        }
 
-        .content-submit-cluster-anon {
-          display: table-cell;
-          height: 40px;
-
-          img {
-            height: 30px;
-            width: 30px;
+            &:hover {
+              opacity: 0.7;
+            }
           }
         }
       }

@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET raw view page. */
-router.get('/r/:id', function(req, res, next) {
+router.get('/r/:id/:title', function(req, res, next) {
     Pastes.findOne({ _id: req.param('id') }).lean().exec(function (err, paste) {
         if (err) throw err;
         if (paste && paste.private && req.query.key) {
@@ -49,7 +49,7 @@ router.post('/', function(req, res) {
 
     const paste = new Pastes({
         _id: shortid.gen(),
-        title: req.body.title,
+        title: req.body.title || 'placeholder.txt',
         date: new Date(),
         private: req.body.private,
         payload: req.body.payload
